@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<Schema name="learn_kylin">
+    <Cube name="测试">
+        <!-- 事实表(fact table) -->
+        <Table name="KYLIN_SALES" />
+
+        <Dimension name="城市">
+            <Hierarchy hasAll="true" allMemberName="所有城市">
+                <Table name="KYLIN_SALES" ></Table>
+                <Level name="城市名称" column="OPS_REGION"/>
+            </Hierarchy>
+        </Dimension>
+        <Dimension name="时间">
+            <Hierarchy hasAll="true" allMemberName="所有时间">
+                <Table name="KYLIN_SALES" ></Table>
+                <Level name="时间明细" column="PART_DT"/>
+            </Hierarchy>
+        </Dimension>
+
+        <Dimension name="Buyer" foreignKey="BUYER_ID">
+            <Hierarchy hasAll="true" primaryKey="ACCOUNT_ID" primaryKeyTable="KYLIN_ACCOUNT">
+                <!--<table name="KYLIN_ACCOUNT"/>-->
+                <Join leftKey="ACCOUNT_COUNTRY" rightKey="COUNTRY">
+                    <Table name="KYLIN_ACCOUNT"/>
+                    <Table name="KYLIN_COUNTRY"/>
+                </Join>
+                <Level name="购买者所在城市" column="NAME" table="KYLIN_COUNTRY"/>
+                <!--<Level name="购买者所在城市" column="ACCOUNT_COUNTRY"/>-->
+            </Hierarchy>
+        </Dimension>
+
+        <Measure name="购买用户数量" column="BUYER_ID" aggregator="count" datatype="Integer" />
+        <Measure name="商品价格" column="PRICE" aggregator="sum" datatype="Integer" />
+    </Cube>
+</Schema>

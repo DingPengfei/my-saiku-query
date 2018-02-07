@@ -1,0 +1,199 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.saiku</groupId>
+	<artifactId>saiku-query</artifactId>
+	<version>0.4-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>query</name>
+	<url>http://maven.apache.org</url>
+
+	<distributionManagement>
+		<repository>
+			<id>deployment</id>
+			<name>Internal Releases</name>
+			<url>http://repo.meteorite.bi/content/repositories/alabs-release-local/</url>
+		</repository>
+		<snapshotRepository>
+			<id>deployment</id>
+			<name>Internal Snapshots</name>
+			<url>http://repo.meteorite.bi/content/repositories/alabs-snapshot-local/</url>
+		</snapshotRepository>
+	</distributionManagement>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.target>1.6</maven.compiler.target>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.12.4</version>
+				<configuration>
+					<argLine> -Xmx512m</argLine>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.2</version>
+				<executions>
+					<execution>
+						<id>test</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<echo message="Prepare Test. Unzipping foodmart" />
+								<unzip dest="target/test-classes/">
+									<fileset dir="lib/">
+										<include name="mondrian-data*.jar" />
+									</fileset>
+								</unzip>
+								<echo message="Unzipped!" />
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+	<repositories>
+        <repository>
+            <id>pentaho-third-party</id>
+            <url>http://nexus.pentaho.org/content/repositories/proxied-3rd-party-releases/</url>
+        </repository>
+        <repository>
+            <id>pentaho-public-release</id>
+            <url>http://nexus.pentaho.org/content/repositories/pentaho-public-release-repos/</url>
+        </repository>
+		<repository>
+			<id>pentaho.resolve.repo</id>
+			<url>https://public.nexus.pentaho.org/content/groups/omni/</url>
+		</repository>
+	</repositories>
+	<dependencies>
+		<dependency>
+			<groupId>org.olap4j</groupId>
+			<artifactId>olap4j</artifactId>
+			<version>1.2.0</version>
+			<exclusions>
+				<exclusion>
+					<groupId>asm</groupId>
+					<artifactId>asm</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>asm</groupId>
+					<artifactId>asm-commons</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>retroweaver</groupId>
+					<artifactId>retroweaver</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>retroweaver</groupId>
+					<artifactId>retroweaver-rt</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>pentaho</groupId>
+			<artifactId>mondrian</artifactId>
+            <!--<version>3.9.0.2</version>-->
+			<version>3.7.0.0-752</version>
+            <!--<version>4.4-SNAPSHOT</version>-->
+			<exclusions>
+				<exclusion>
+					<groupId>javax.servlet</groupId>
+					<artifactId>jsp-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>2.3.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+
+		<!--<dependency>-->
+            <!--<groupId>mondrian-kylin</groupId>-->
+            <!--<artifactId>mondrian-kylin</artifactId>-->
+            <!--<scope>system</scope>-->
+            <!--<systemPath>${project.basedir}/lib/mondrian-4.4-lagunitas-SNAPSHOT-with-kylin-dialect.jar</systemPath>-->
+        <!--</dependency>-->
+
+       <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.4</version>
+        </dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.17</version>
+			<scope>test</scope>
+		</dependency>
+        <dependency>
+            <groupId>org.apache.kylin</groupId>
+            <artifactId>kylin-jdbc</artifactId>
+            <version>2.2.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>slf4j-log4j12</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                </exclusion>
+            </exclusions>
+            <!--<scope>system</scope>-->
+            <!--<systemPath>${project.basedir}/lib/kylin-jdbc-1.0-incubating.jar</systemPath>-->
+            <scope>test</scope>
+        </dependency>
+		<dependency>
+			<groupId>hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>1.8.0.10</version>
+			<scope>test</scope>
+		</dependency>
+        <dependency>
+            <groupId>foodmart</groupId>
+            <artifactId>foormart</artifactId>
+            <version>1.8.0.10</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/mondrian-data-foodmart-hsql-0.1.jar</systemPath>
+        </dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.saiku</groupId>-->
+			<!--<artifactId>saiku-query</artifactId>-->
+			<!--<version>0.1-SNAPSHOT</version>-->
+		<!--</dependency>-->
+	</dependencies>
+</project>

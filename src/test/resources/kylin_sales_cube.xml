@@ -1,0 +1,395 @@
+<?xml version='1.0'?>
+<Schema name='kylin_sales_cube' description='null' metamodelVersion='4.0'>
+<PhysicalSchema>
+<Table name='KYLIN_SALES'/>
+<Table name='SELLER_COUNTRY'/>
+<Table name='BUYER_COUNTRY'/>
+<Table name='KYLIN_CAL_DT'/>
+<Table name='BUYER_ACCOUNT'/>
+<Table name='KYLIN_CATEGORY_GROUPINGS'/>
+<Table name='SELLER_ACCOUNT'/>
+</PhysicalSchema>
+<Dimension name='TRANS_ID' key='TRANS_ID' table='KYLIN_SALES'>
+<Attributes>
+<Attribute hasHierarchy='false' levelType='Regular' name='TRANS_ID'>
+<Key>
+<Column name='TRANS_ID'/>
+</Key>
+</Attribute>
+</Attributes>
+<Hierarchies>
+<Hierarchy  name='TRANS_ID' hasAll='true'>
+<Level attribute='TRANS_ID'/>
+</Hierarchy>
+</Hierarchies>
+</Dimension>
+<Dimension name='YEAR_BEG_DT' key='KYLIN_CAL_DT.CAL_DT' table='KYLIN_CAL_DT'>
+<Attributes>
+<Attribute hasHierarchy='false' levelType='Regular' name='YEAR_BEG_DT'>
+<Key>
+<Column name='YEAR_BEG_DT'/>
+</Key>
+</Attribute>
+<Attribute hasHierarchy='false' levelType='Regular' name='KYLIN_CAL_DT.CAL_DT'>
+<Key>
+<Column name='KYLIN_CAL_DT.CAL_DT'/>
+</Key>
+</Attribute>
+</Attributes>
+<Hierarchies>
+<Hierarchy  name='YEAR_BEG_DT' hasAll='true'>
+<Level attribute='YEAR_BEG_DT'/>
+</Hierarchy>
+</Hierarchies>
+</Dimension>
+<Dimension name='MONTH_BEG_DT' key='KYLIN_CAL_DT.CAL_DT' table='KYLIN_CAL_DT'>
+<Attributes>
+<Attribute hasHierarchy='false' levelType='Regular' name='MONTH_BEG_DT'>
+<Key>
+<Column name='MONTH_BEG_DT'/>
+</Key>
+</Attribute>
+<Attribute hasHierarchy='false' levelType='Regular' name='KYLIN_CAL_DT.CAL_DT'>
+<Key>
+<Column name='KYLIN_CAL_DT.CAL_DT'/>
+</Key>
+</Attribute>
+</Attributes>
+<Hierarchies>
+<Hierarchy  name='MONTH_BEG_DT' hasAll='true'>
+<Level attribute='MONTH_BEG_DT'/>
+</Hierarchy>
+</Hierarchies>
+</Dimension>
+<Dimension name='WEEK_BEG_DT' key='KYLIN_CAL_DT.CAL_DT' table='KYLIN_CAL_DT'>
+<Attributes>
+<Attribute hasHierarchy='false' levelType='Regular' name='WEEK_BEG_DT'>
+<Key>
+<Column name='WEEK_BEG_DT'/>
+</Key>
+</Attribute>
+<Attribute hasHierarchy='false' levelType='Regular' name='KYLIN_CAL_DT.CAL_DT'>
+<Key>
+<Column name='KYLIN_CAL_DT.CAL_DT'/>
+</Key>
+</Attribute>
+</Attributes>
+<Hierarchies>
+<Hierarchy  name='WEEK_BEG_DT' hasAll='true'>
+<Level attribute='WEEK_BEG_DT'/>
+</Hierarchy>
+</Hierarchies>
+</Dimension>
+<Dimension name='USER_DEFINED_FIELD1' key='KYLIN_CATEGORY_GROUPINGS.LEAF_CATEG_ID' table='KYLIN_CATEGORY_GROUPINGS'>
+<Attributes>
+<Attribute hasHierarchy='false' levelType='Regular' name='USER_DEFINED_FIELD1'>
+<Key>
+<Column name='USER_DEFINED_FIELD1'/>
+</Key>
+</Attribute>
+<Attribute hasHierarchy='false' levelType='Regular' name='KYLIN_CATEGORY_GROUPINGS.LEAF_CATEG_ID'>
+<Key>
+<Column name='KYLIN_CATEGORY_GROUPINGS.LEAF_CATEG_ID'/>
+</Key>
+</Attribute>
+<Attribute hasHierarchy='false' levelType='Regular' name='KYLIN_CATEGORY_GROUPINGS.SITE_ID'>
+<Key>
+<Column name='KYLIN_CATEGORY_GROUPINGS.SITE_ID'/>
+</Key>
+</Attribute>
+</Attributes>
+<Hierarchies>
+<Hierarchy  name='USER_DEFINED_FIELD1' hasAll='true'>
+<Level attribute='USER_DEFINED_FIELD1'/>
+</Hierarchy>
+</Hierarchies>
+</Dimension>
+<Dimension name='USER_DEFINED_FIELD3' key='KYLIN_CATEGORY_GROUPINGS.LEAF_CATEG_ID' table='KYLIN_CATEGORY_GROUPINGS'>
+<Attributes>
+<Attribute hasHierarchy='false' levelType='Regular' name='USER_DEFINED_FIELD3'>
+<Key>
+<Column name='USER_DEFINED_FIELD3'/>
+</Key>
+</Attribute>
+<Attribute hasHierarchy='false' levelType='Regular' name='KYLIN_CATEGORY_GROUPINGS.LEAF_CATEG_ID'>
+<Key>
+<Column name='KYLIN_CATEGORY_GROUPINGS.LEAF_CATEG_ID'/>
+</Key>
+</Attribute>
+<Attribute hasHierarchy='false' levelType='Regular' name='KYLIN_CATEGORY_GROUPINGS.SITE_ID'>
+<Key>
+<Column name='KYLIN_CATEGORY_GROUPINGS.SITE_ID'/>
+</Key>
+</Attribute>
+</Attributes>
+<Hierarchies>
+<Hierarchy  name='USER_DEFINED_FIELD3' hasAll='true'>
+<Level attribute='USER_DEFINED_FIELD3'/>
+</Hierarchy>
+</Hierarchies>
+</Dimension>
+<Dimension name='META_CATEG_NAME' key='KYLIN_CATEGORY_GROUPINGS.LEAF_CATEG_ID' table='KYLIN_CATEGORY_GROUPINGS'>
+<Attributes>
+<Attribute hasHierarchy='false' levelType='Regular' name='META_CATEG_NAME'>
+<Key>
+<Column name='META_CATEG_NAME'/>
+</Key>
+</Attribute>
+<Attribute hasHierarchy='false' levelType='Regular' name='KYLIN_CATEGORY_GROUPINGS.LEAF_CATEG_ID'>
+<Key>
+<Column name='KYLIN_CATEGORY_GROUPINGS.LEAF_CATEG_ID'/>
+</Key>
+</Attribute>
+<Attribute hasHierarchy='false' levelType='Regular' name='KYLIN_CATEGORY_GROUPINGS.SITE_ID'>
+<Key>
+<Column name='KYLIN_CATEGORY_GROUPINGS.SITE_ID'/>
+</Key>
+</Attribute>
+</Attributes>
+<Hierarchies>
+<Hierarchy  name='META_CATEG_NAME' hasAll='true'>
+<Level attribute='META_CATEG_NAME'/>
+</Hierarchy>
+</Hierarchies>
+</Dimension>
+<Dimension name='CATEG_LVL2_NAME' key='KYLIN_CATEGORY_GROUPINGS.LEAF_CATEG_ID' table='KYLIN_CATEGORY_GROUPINGS'>
+<Attributes>
+<Attribute hasHierarchy='false' levelType='Regular' name='CATEG_LVL2_NAME'>
+<Key>
+<Column name='CATEG_LVL2_NAME'/>
+</Key>
+</Attribute>
+<Attribute hasHierarchy='false' levelType='Regular' name='KYLIN_CATEGORY_GROUPINGS.LEAF_CATEG_ID'>
+<Key>
+<Column name='KYLIN_CATEGORY_GROUPINGS.LEAF_CATEG_ID'/>
+</Key>
+</Attribute>
+<Attribute hasHierarchy='false' levelType='Regular' name='KYLIN_CATEGORY_GROUPINGS.SITE_ID'>
+<Key>
+<Column name='KYLIN_CATEGORY_GROUPINGS.SITE_ID'/>
+</Key>
+</Attribute>
+</Attributes>
+<Hierarchies>
+<Hierarchy  name='CATEG_LVL2_NAME' hasAll='true'>
+<Level attribute='CATEG_LVL2_NAME'/>
+</Hierarchy>
+</Hierarchies>
+</Dimension>
+<Dimension name='CATEG_LVL3_NAME' key='KYLIN_CATEGORY_GROUPINGS.LEAF_CATEG_ID' table='KYLIN_CATEGORY_GROUPINGS'>
+<Attributes>
+<Attribute hasHierarchy='false' levelType='Regular' name='CATEG_LVL3_NAME'>
+<Key>
+<Column name='CATEG_LVL3_NAME'/>
+</Key>
+</Attribute>
+<Attribute hasHierarchy='false' levelType='Regular' name='KYLIN_CATEGORY_GROUPINGS.LEAF_CATEG_ID'>
+<Key>
+<Column name='KYLIN_CATEGORY_GROUPINGS.LEAF_CATEG_ID'/>
+</Key>
+</Attribute>
+<Attribute hasHierarchy='false' levelType='Regular' name='KYLIN_CATEGORY_GROUPINGS.SITE_ID'>
+<Key>
+<Column name='KYLIN_CATEGORY_GROUPINGS.SITE_ID'/>
+</Key>
+</Attribute>
+</Attributes>
+<Hierarchies>
+<Hierarchy  name='CATEG_LVL3_NAME' hasAll='true'>
+<Level attribute='CATEG_LVL3_NAME'/>
+</Hierarchy>
+</Hierarchies>
+</Dimension>
+<Dimension name='LSTG_FORMAT_NAME' key='LSTG_FORMAT_NAME' table='KYLIN_SALES'>
+<Attributes>
+<Attribute hasHierarchy='false' levelType='Regular' name='LSTG_FORMAT_NAME'>
+<Key>
+<Column name='LSTG_FORMAT_NAME'/>
+</Key>
+</Attribute>
+</Attributes>
+<Hierarchies>
+<Hierarchy  name='LSTG_FORMAT_NAME' hasAll='true'>
+<Level attribute='LSTG_FORMAT_NAME'/>
+</Hierarchy>
+</Hierarchies>
+</Dimension>
+<Dimension name='SELLER_ID' key='SELLER_ID' table='KYLIN_SALES'>
+<Attributes>
+<Attribute hasHierarchy='false' levelType='Regular' name='SELLER_ID'>
+<Key>
+<Column name='SELLER_ID'/>
+</Key>
+</Attribute>
+</Attributes>
+<Hierarchies>
+<Hierarchy  name='SELLER_ID' hasAll='true'>
+<Level attribute='SELLER_ID'/>
+</Hierarchy>
+</Hierarchies>
+</Dimension>
+<Dimension name='BUYER_ID' key='BUYER_ID' table='KYLIN_SALES'>
+<Attributes>
+<Attribute hasHierarchy='false' levelType='Regular' name='BUYER_ID'>
+<Key>
+<Column name='BUYER_ID'/>
+</Key>
+</Attribute>
+</Attributes>
+<Hierarchies>
+<Hierarchy  name='BUYER_ID' hasAll='true'>
+<Level attribute='BUYER_ID'/>
+</Hierarchy>
+</Hierarchies>
+</Dimension>
+<Dimension name='ACCOUNT_BUYER_LEVEL' key='ACCOUNT_BUYER_LEVEL' table='BUYER_ACCOUNT'>
+<Attributes>
+<Attribute hasHierarchy='false' levelType='Regular' name='ACCOUNT_BUYER_LEVEL'>
+<Key>
+<Column name='ACCOUNT_BUYER_LEVEL'/>
+</Key>
+</Attribute>
+</Attributes>
+<Hierarchies>
+<Hierarchy  name='ACCOUNT_BUYER_LEVEL' hasAll='true'>
+<Level attribute='ACCOUNT_BUYER_LEVEL'/>
+</Hierarchy>
+</Hierarchies>
+</Dimension>
+<Dimension name='ACCOUNT_SELLER_LEVEL' key='ACCOUNT_SELLER_LEVEL' table='SELLER_ACCOUNT'>
+<Attributes>
+<Attribute hasHierarchy='false' levelType='Regular' name='ACCOUNT_SELLER_LEVEL'>
+<Key>
+<Column name='ACCOUNT_SELLER_LEVEL'/>
+</Key>
+</Attribute>
+</Attributes>
+<Hierarchies>
+<Hierarchy  name='ACCOUNT_SELLER_LEVEL' hasAll='true'>
+<Level attribute='ACCOUNT_SELLER_LEVEL'/>
+</Hierarchy>
+</Hierarchies>
+</Dimension>
+<Dimension name='BUYER_COUNTRY' key='ACCOUNT_COUNTRY' table='BUYER_ACCOUNT'>
+<Attributes>
+<Attribute hasHierarchy='false' levelType='Regular' name='ACCOUNT_COUNTRY'>
+<Key>
+<Column name='ACCOUNT_COUNTRY'/>
+</Key>
+</Attribute>
+</Attributes>
+<Hierarchies>
+<Hierarchy  name='ACCOUNT_COUNTRY' hasAll='true'>
+<Level attribute='ACCOUNT_COUNTRY'/>
+</Hierarchy>
+</Hierarchies>
+</Dimension>
+<Dimension name='SELLER_COUNTRY' key='ACCOUNT_COUNTRY' table='SELLER_ACCOUNT'>
+<Attributes>
+<Attribute hasHierarchy='false' levelType='Regular' name='ACCOUNT_COUNTRY'>
+<Key>
+<Column name='ACCOUNT_COUNTRY'/>
+</Key>
+</Attribute>
+</Attributes>
+<Hierarchies>
+<Hierarchy  name='ACCOUNT_COUNTRY' hasAll='true'>
+<Level attribute='ACCOUNT_COUNTRY'/>
+</Hierarchy>
+</Hierarchies>
+</Dimension>
+<Dimension name='BUYER_COUNTRY_NAME' key='NAME' table='BUYER_COUNTRY'>
+<Attributes>
+<Attribute hasHierarchy='false' levelType='Regular' name='NAME'>
+<Key>
+<Column name='NAME'/>
+</Key>
+</Attribute>
+</Attributes>
+<Hierarchies>
+<Hierarchy  name='NAME' hasAll='true'>
+<Level attribute='NAME'/>
+</Hierarchy>
+</Hierarchies>
+</Dimension>
+<Dimension name='SELLER_COUNTRY_NAME' key='NAME' table='SELLER_COUNTRY'>
+<Attributes>
+<Attribute hasHierarchy='false' levelType='Regular' name='NAME'>
+<Key>
+<Column name='NAME'/>
+</Key>
+</Attribute>
+</Attributes>
+<Hierarchies>
+<Hierarchy  name='NAME' hasAll='true'>
+<Level attribute='NAME'/>
+</Hierarchy>
+</Hierarchies>
+</Dimension>
+<Dimension name='OPS_USER_ID' key='OPS_USER_ID' table='KYLIN_SALES'>
+<Attributes>
+<Attribute hasHierarchy='false' levelType='Regular' name='OPS_USER_ID'>
+<Key>
+<Column name='OPS_USER_ID'/>
+</Key>
+</Attribute>
+</Attributes>
+<Hierarchies>
+<Hierarchy  name='OPS_USER_ID' hasAll='true'>
+<Level attribute='OPS_USER_ID'/>
+</Hierarchy>
+</Hierarchies>
+</Dimension>
+<Dimension name='OPS_REGION' key='OPS_REGION' table='KYLIN_SALES'>
+<Attributes>
+<Attribute hasHierarchy='false' levelType='Regular' name='OPS_REGION'>
+<Key>
+<Column name='OPS_REGION'/>
+</Key>
+</Attribute>
+</Attributes>
+<Hierarchies>
+<Hierarchy  name='OPS_REGION' hasAll='true'>
+<Level attribute='OPS_REGION'/>
+</Hierarchy>
+</Hierarchies>
+</Dimension>
+<Cube name='kylin_sales_cube'>
+<Dimensions>
+<Dimension source='TRANS_ID' visible='true'/>
+<Dimension source='YEAR_BEG_DT' visible='true'/>
+<Dimension source='MONTH_BEG_DT' visible='true'/>
+<Dimension source='WEEK_BEG_DT' visible='true'/>
+<Dimension source='USER_DEFINED_FIELD1' visible='true'/>
+<Dimension source='USER_DEFINED_FIELD3' visible='true'/>
+<Dimension source='META_CATEG_NAME' visible='true'/>
+<Dimension source='CATEG_LVL2_NAME' visible='true'/>
+<Dimension source='CATEG_LVL3_NAME' visible='true'/>
+<Dimension source='LSTG_FORMAT_NAME' visible='true'/>
+<Dimension source='SELLER_ID' visible='true'/>
+<Dimension source='BUYER_ID' visible='true'/>
+<Dimension source='ACCOUNT_BUYER_LEVEL' visible='true'/>
+<Dimension source='ACCOUNT_SELLER_LEVEL' visible='true'/>
+<Dimension source='BUYER_COUNTRY' visible='true'/>
+<Dimension source='SELLER_COUNTRY' visible='true'/>
+<Dimension source='BUYER_COUNTRY_NAME' visible='true'/>
+<Dimension source='SELLER_COUNTRY_NAME' visible='true'/>
+<Dimension source='OPS_USER_ID' visible='true'/>
+<Dimension source='OPS_REGION' visible='true'/>
+</Dimensions>
+<MeasureGroups>
+<MeasureGroup table='KYLIN_SALES'>
+<DimensionLinks>
+ </DimensionLinks>
+<Measures>
+<Measure aggregator='sum' column='KYLIN_SALES.PRICE' name='GMV_SUM' visible='true'/>
+<Measure aggregator='sum' column='BUYER_ACCOUNT.ACCOUNT_BUYER_LEVEL' name='BUYER_LEVEL_SUM' visible='true'/>
+<Measure aggregator='sum' column='SELLER_ACCOUNT.ACCOUNT_SELLER_LEVEL' name='SELLER_LEVEL_SUM' visible='true'/>
+<Measure aggregator='count' column='KYLIN_SALES.BUYER_ID' name='TRANS_CNT' visible='true'/>
+<Measure aggregator='distinct-count' column='KYLIN_SALES.SELLER_ID' name='SELLER_CNT_HLL' visible='true'/>
+<Measure aggregator='top_n' column='KYLIN_SALES.PRICE' name='TOP_SELLER' visible='true'/>
+</Measures>
+</MeasureGroup>
+</MeasureGroups>
+</Cube>
+</Schema>

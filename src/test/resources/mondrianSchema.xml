@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<Schema name="ad_schema">
+    <Cube name="测试">
+        <!-- 事实表(fact table) -->
+        <Table name="KYLIN_SALES" />
+        <Dimension name="城市">
+            <Hierarchy hasAll="true" allMemberName="所有城市">
+                <Table name="KYLIN_SALES" ></Table>
+                <Level name="城市名称" column="OPS_REGION" table="KYLIN_SALES"/>
+            </Hierarchy>
+        </Dimension>
+
+        <Measure name="购买用户数量" column="BUYER_ID" aggregator="count" datatype="Integer" />
+        <!--<Measure name="唯一曝光数" column="COOKIEID_IMP" aggregator="distinct-count" datatype="Integer" />-->
+    </Cube>
+</Schema>
